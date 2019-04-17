@@ -1,0 +1,51 @@
+
+docker pull continuumio/anaconda3
+docker run -it -p 8888:8888 continuumio/anaconda3
+
+jupyter notebook --generate-config
+
+vi /home/anaconda/.jupyter/jupyter_notebook_config.py
+
+vimでtokenを編集
+c.NotebookApp.token = '[password]'
+に変更してあげる。
+
+start jupyter
+jupyter notebook --ip 0.0.0.0 --no-browser
+
+停止しているコンテナの確認
+docker ps -a
+コンテナを起動
+docker start ID
+コンテナに接続
+docker attach ID
+コンテナを停止
+docker stop ID
+
+
+
+Dockerコンテナの操作
+
+起動中のコンテナを確認
+
+docker ps
+
+起動中のコンテナを停止
+
+docker stop <Container-ID>
+
+コンテナを再起動
+
+docker restart <Container-ID>
+
+ホストに存在するコンテナの一覧
+
+docker ps -a
+
+コンテナを削除
+
+docker rm <Container-ID>
+
+全てのコンテナを削除 (UNIX環境のみ)
+
+docker rm `docker ps --no-trunc -aq`
